@@ -7,7 +7,7 @@ const portfolio = [
     category: "Movie Project",
     image:
       "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80",
-    className: "md:row-span-2 md:col-span-1", // লম্বা প্রিমিয়াম কার্ড
+    className: "md:row-span-2 md:col-span-1", // ২ লাইন লম্বা প্রিমিয়াম কার্ড
   },
   {
     title: "Aurum Motors",
@@ -28,14 +28,14 @@ const portfolio = [
     category: "Commercial Ad",
     image:
       "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=900&q=80",
-    className: "md:row-span-2",
+    className: "md:row-span-2", // ২ লাইন লম্বা কার্ড 🎬
   },
   {
     title: "The Last Frame",
     category: "Movie Project",
     image:
       "https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=900&q=80",
-    className: "", // লম্বা প্রিমিয়াম কার্ড
+    className: "",
   },
   {
     title: "Urban Pulse",
@@ -49,9 +49,8 @@ const portfolio = [
     category: "Short Film",
     image:
       "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=900&q=80",
-    className: "md:col-span-2", // বড় সিনেমাটিক ব্লক 🎬
+    className: "md:col-span-2", // বড় সিনেমাটিক ব্লক
   },
-
   {
     title: "Golden Hour",
     category: "Fashion Film",
@@ -64,7 +63,7 @@ const portfolio = [
     category: "Creative Visuals",
     image:
       "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80",
-    className: "md:col-span-3",
+    className: "md:col-span-3", // একদম নিচের ফুল-উইথ ফিনিশিং ব্যানার ✨
   },
 ];
 
@@ -72,11 +71,11 @@ export default function PortfolioSection() {
   return (
     <section
       id="portfolio"
-      className="section-spacing reveal py-24 bg-[#0a0a0a]"
+      className="section-spacing reveal bg-[#0a0a0a] py-24"
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         {/* হেডার পার্ট 🎙️ */}
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end border-b border-white/5 pb-8">
+        <div className="flex flex-col justify-between gap-6 border-b border-white/5 pb-8 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d4af37]">
               Selected Works
@@ -93,8 +92,8 @@ export default function PortfolioSection() {
           </p>
         </div>
 
-        {/* বেন্টো গ্রিড লেআউট 🧩 */}
-        <div className="mt-12 grid auto-rows-[280px] gap-6 sm:grid-cols-1 md:grid-cols-3">
+        {/* বেন্টো গ্রিড লেআউট (grid-flow-dense ম্যাজিক সহ) 🧩 */}
+        <div className="mt-12 grid auto-rows-[280px] gap-6 grid-cols-1 md:grid-cols-3 md:grid-flow-dense">
           {portfolio.map((project) => (
             <article
               key={project.title}
@@ -109,15 +108,15 @@ export default function PortfolioSection() {
                 className="object-cover transition duration-700 group-hover:scale-105 group-hover:filter group-hover:brightness-90"
               />
 
-              {/* ওভারলে গ্রাডিয়েন্ট কালার */}
+              {/* ওভারলে গ্রাডিয়েন্ট কালার (Tailwind v4 স্ট্যান্ডার্ড সাপোর্ট) */}
               <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
 
-              {/* টেক্সট কন্টেন্ট (সুন্দর হোভার অ্যানিমেশন সহ) */}
+              {/* টেক্সট কন্টেন্ট */}
               <div className="absolute inset-x-0 bottom-0 translate-y-2 p-6 opacity-90 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#d4af37]">
                   {project.category}
                 </p>
-                <h3 className="mt-2 font-heading text-xl font-bold text-white sm:text-2xl drop-shadow-md">
+                <h3 className="font-heading mt-2 text-xl font-bold text-white sm:text-2xl drop-shadow-md">
                   {project.title}
                 </h3>
               </div>

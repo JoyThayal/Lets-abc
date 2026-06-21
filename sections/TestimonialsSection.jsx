@@ -40,41 +40,72 @@ export default function TestimonialsSection() {
 
     return () => window.clearInterval(timer);
   }, []);
+
   return (
-    <section className="section-spacing reveal">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="max-w-2xl">
-          <p className="section-kicker">Client Verdict</p>
-          <h2 className="section-title">Proof in Every Frame</h2>
+    <section
+      id="testimonials"
+      className="section-spacing reveal py-16 sm:py-24"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-8">
+        {/* Header পার্ট */}
+        <div className="max-w-2xl border-l-2 border-[#d4af37] pl-4 sm:pl-6">
+          <p className="section-kicker text-xs font-bold uppercase tracking-[0.25em] text-[#d4af37]">
+            Client Verdict
+          </p>
+          <h2 className="section-title mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+            Proof in Every Frame
+          </h2>
         </div>
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <article
-              key={testimonial.name}
-              className={`testimonial-card transition duration-700 ${
-                activeTestimonial === index
-                  ? "border-[#d4af37]/50 bg-[#d4af37]/6"
-                  : ""
-              }`}
-            >
-              <p className="text-lg leading-8 text-zinc-200">
-                &ldquo;{testimonial.review}&rdquo;
-              </p>
-              <div className="mt-8 flex items-center gap-4">
-                <Image
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  width={56}
-                  height={56}
-                  className="h-14 w-14 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="font-semibold">{testimonial.name}</h3>
-                  <p className="text-sm text-zinc-400">{testimonial.company}</p>
+
+        {/* ৩-কলামের রেসপনসিভ গ্রিড 🧩 */}
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((testimonial, index) => {
+            const isActive = activeTestimonial === index;
+
+            return (
+              <article
+                key={testimonial.name}
+                className={`testimonial-card relative flex flex-col justify-between rounded-sm p-6 sm:p-8 border transition-all duration-700 ease-in-out ${
+                  isActive
+                    ? "border-[#d4af37]/40 bg-zinc-900 shadow-[0_10px_30px_-15px_rgba(212,175,55,0.08)] scale-[1.02]"
+                    : "border-white/5 bg-[#0a0a0a]/40"
+                }`}
+              >
+                {/* Review Text */}
+                <p className="text-sm leading-relaxed text-zinc-300 sm:text-base sm:leading-8">
+                  &ldquo;{testimonial.review}&rdquo;
+                </p>
+
+                {/* User Info Block */}
+                <div className="mt-8 flex items-center gap-4 border-t border-white/5 pt-6">
+                  <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-white/10 sm:h-14 sm:w-14">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      sizes="56px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-white sm:text-base transition-colors duration-300">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-xs text-zinc-400 sm:text-sm">
+                      {testimonial.company}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+
+                {/* Active Indicator Top Light Line 💡 */}
+                <div
+                  className={`absolute top-0 left-0 h-0.5 bg-linear-to-r from-[#d4af37] to-transparent transition-all duration-700 ${
+                    isActive ? "w-full" : "w-0"
+                  }`}
+                />
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

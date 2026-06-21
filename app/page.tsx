@@ -3,7 +3,7 @@ import HeroSection from "@/sections/Hero";
 import AboutSection from "@/sections/About";
 import ServicesSection from "@/sections/Services";
 import PortfolioSection from "@/sections/Portfolio";
-import WCUSection from "@/sections/WCUSections";
+import WCUSection from "@/sections/WCUSection";
 import TestimonialsSection from "@/sections/TestimonialsSection";
 import ContactSection from "@/sections/Contact";
 import { LandingPage } from "@/animations/LandingPage";

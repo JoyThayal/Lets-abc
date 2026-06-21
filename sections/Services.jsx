@@ -1,4 +1,4 @@
-const services = [
+export const services = [
   {
     title: "Feature Film Production",
     description:
@@ -28,26 +28,56 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="section-spacing reveal bg-white/1.5">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="max-w-2xl">
-          <p className="section-kicker">Our Expertise</p>
-          <h2 className="section-title">Engineered for Cinematic Mastery</h2>
+    <section
+      id="services"
+      className="section-spacing reveal bg-zinc-900/30 py-16 sm:py-24"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-8">
+        {/* Header Part */}
+        <div className="max-w-2xl border-l-2 border-[#d4af37] pl-4 sm:pl-6">
+          <p className="section-kicker text-xs font-bold uppercase tracking-[0.25em] text-[#d4af37]">
+            Our Expertise
+          </p>
+          <h2 className="section-title mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+            Engineered for Cinematic Mastery
+          </h2>
         </div>
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {services.map((service, index) => (
-            <article key={service.title} className="luxury-card group">
-              <span className="text-sm font-semibold text-[#d4af37]">
-                0{index + 1}
-              </span>
-              <h3 className="mt-12 font-heading text-2xl font-bold">
-                {service.title}
-              </h3>
-              <p className="mt-5 leading-7 text-zinc-400">
-                {service.description}
-              </p>
-            </article>
-          ))}
+
+        {/* Services Bento-style Responsive Grid 🧩 */}
+        <div className="mt-14 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => {
+            // ৫ নম্বর কার্ডটাকে বড় স্ক্রিনে একটু ওয়াইড (col-span) করে দিচ্ছি যাতে গ্রিডটা ব্যালেন্স দেখায়
+            const isLastItem = index === services.length - 1;
+
+            return (
+              <article
+                key={service.title}
+                className={`luxury-card group relative flex flex-col justify-between overflow-hidden rounded-sm border border-white/5 bg-[#0a0a0a]/60 p-6 sm:p-8 transition-all duration-500 hover:border-[#d4af37]/30 hover:bg-[#0a0a0a]/90 hover:shadow-[0_10px_30px_-15px_rgba(212,175,55,0.1)] ${
+                  isLastItem ? "sm:col-span-2 lg:col-span-1" : ""
+                }`}
+              >
+                <div>
+                  {/* Serial Number with subtle scale animation on hover */}
+                  <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#d4af37]/70 transition-transform duration-300 group-hover:scale-110 group-hover:text-[#d4af37]">
+                    0{index + 1}
+                  </span>
+
+                  {/* Title */}
+                  <h3 className="font-heading mt-8 text-xl font-bold text-white transition-colors duration-300 group-hover:text-[#d4af37] sm:text-2xl">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="mt-4 text-sm leading-relaxed text-zinc-400 transition-colors duration-300 group-hover:text-zinc-300 sm:text-base sm:leading-7">
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Decorative Bottom Line Border on Hover 🔮 */}
+                <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-linear-to-r from-[#d4af37] to-transparent transition-all duration-500 group-hover:w-full" />
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

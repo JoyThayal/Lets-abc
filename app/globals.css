@@ -75,7 +75,7 @@ video {
 .section-title {
   color: #ffffff;
   font-family: "Syne", "Inter", Arial, Helvetica, sans-serif;
-  font-size: clamp(2.3rem, 5vw, 4.9rem);
+  font-size: clamp(2.3rem, 4vw, 4.5rem);
   font-weight: 800;
   letter-spacing: 0;
   line-height: 0.98;
